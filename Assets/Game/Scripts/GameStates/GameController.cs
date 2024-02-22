@@ -19,7 +19,12 @@ public class GameController : MonoBehaviour
     public AudioSource _WinnerSound;
     [SerializeField]
     public AudioSource _LoserSound;
-
+    [SerializeField]
+    public List<GameObject> tiles;
+    [SerializeField]
+    public List<GameObject> submarines;
+    [SerializeField]
+    public SubmarineSpawner subSpawner;
 
 
 }

@@ -41,13 +41,23 @@ public class WaitingState : State
             Collision col = CBall.col;
 
             CBall.Des();
-            if (col.gameObject.tag == "Winner")
+            if (col.gameObject.tag == "Tile")
             {
-                _stateMachine.ChangeState(_stateMachine.WonState);
-            }
-            else if (col.gameObject.tag == "Loser")
-            {
-                _stateMachine.ChangeState(_stateMachine.LostState);
+                col.gameObject.GetComponent<Tiles>().cannonHit = true;
+                int numOfSunkSubs = 0;
+                foreach(GameObject sub in _controller.subSpawner.SpawnedSubmarines)
+                {
+                    sub.GetComponent<Submarines>().checkIfSunk();
+                    if (sub.GetComponent<Submarines>().hasSunk)
+                    {
+                        numOfSunkSubs += 1;
+                    }
+                }
+                if(numOfSunkSubs == _controller.subSpawner.SpawnedSubmarines.Count)
+                {
+                    _stateMachine.ChangeState(_stateMachine.WonState);
+                }else
+                _stateMachine.ChangeState(_stateMachine.PlayState);
             }
             else
             {
