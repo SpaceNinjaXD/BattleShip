@@ -148,6 +148,7 @@ MonoBehaviour:
   timesRotated: 0
   gameController: {fileID: 0}
   isLegal: 0
+  hasSunk: 0
 --- !u!54 &6581372634733034816
 Rigidbody:
   m_ObjectHideFlags: 0
