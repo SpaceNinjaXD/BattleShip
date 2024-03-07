@@ -25,6 +25,24 @@ public class GameController : MonoBehaviour
     public List<GameObject> submarines;
     [SerializeField]
     public SubmarineSpawner subSpawner;
+    [SerializeField]
+    public int ShotsLeft;
+    [SerializeField]
+    public int SubsLeft;
+    [SerializeField]
+    public TextMeshProUGUI NumofSubs;
+    [SerializeField]
+    public TextMeshProUGUI NumofShots;
 
 
+    private void Awake()
+    {
+        SubsLeft = submarines.Count;
+    }
+
+    private void Update()
+    {
+        NumofShots.text = ": " + ShotsLeft;
+        NumofSubs.text = ": " + SubsLeft;
+    }
 }

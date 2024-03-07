@@ -27,6 +27,7 @@ public class Submarines : MonoBehaviour
             {
                 touchingTiles.Add(other.gameObject);
                 other.gameObject.GetComponent<Tiles>().isShipTile = true;
+                other.gameObject.GetComponent<Tiles>().sub = this;
 
             }
             
@@ -93,6 +94,10 @@ public class Submarines : MonoBehaviour
         Debug.Log("Ship has Spawned");
     }
 
+    public void RevealSub()
+    {
+        art.SetActive(true);
+    }
     public void checkIfSunk()
     {
         int tileHit = 0;
@@ -106,6 +111,7 @@ public class Submarines : MonoBehaviour
         if(touchingTiles.Count == tileHit)
         {
             hasSunk = true;
+
         }
     }
 

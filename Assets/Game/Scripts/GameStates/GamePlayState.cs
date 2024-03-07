@@ -39,8 +39,16 @@ public class GamePlayState : State
 
         if(_controller.Cannon.GetComponent<CannonController>().hasFired == true)
         {
+            _controller.ShotsLeft -= 1;
             _controller.Cannon.GetComponent<CannonController>().hasFired = false;
             _stateMachine.ChangeState(_stateMachine.WaitState);
+        }
+        if (_controller.SubsLeft == 0)
+        {
+            _stateMachine.ChangeState(_stateMachine.WonState);
+        }else if(_controller.ShotsLeft == 0)
+        {
+            _stateMachine.ChangeState(_stateMachine.LostState);
         }
     }
 
